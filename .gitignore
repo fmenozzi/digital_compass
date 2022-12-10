@@ -1,1 +1,31 @@
 TODO
+
+# For PCBs designed using KiCad: https://www.kicad.org/
+# Format documentation: https://kicad.org/help/file-formats/
+
+# Temporary files
+pcb/digital_compass/*.000
+pcb/digital_compass/*.bak
+pcb/digital_compass/*.bck
+pcb/digital_compass/*.kicad_pcb-bak
+pcb/digital_compass/*.kicad_sch-bak
+pcb/digital_compass/*-backups
+pcb/digital_compass/*.kicad_prl
+pcb/digital_compass/*.sch-bak
+pcb/digital_compass/*~
+pcb/digital_compass/_autosave-*
+pcb/digital_compass/*.tmp
+pcb/digital_compass/*-save.pro
+pcb/digital_compass/*-save.kicad_pcb
+pcb/digital_compass/fp-info-cache
+
+# Netlist files (exported from Eeschema)
+pcb/digital_compass/*.net
+
+# Autorouter files (exported from Pcbnew)
+pcb/digital_compass/*.dsn
+pcb/digital_compass/*.ses
+
+# Exported BOM files
+pcb/digital_compass/*.xml
+pcb/digital_compass/*.csv

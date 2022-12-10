@@ -1,0 +1,23 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (uuid baf13a8d-d2e9-47e7-8ed6-5dc9a1813536)
+
+  (paper "A4")
+
+  (title_block
+    (title "Digital Compass")
+    (date "2022-12-10")
+    (rev "v1")
+    (comment 1 "Description: Digital compass")
+    (comment 2 "License: MIT License (https://opensource.org/licenses/MIT)")
+    (comment 3 "Author: Federico Menozzi")
+  )
+
+  (lib_symbols
+  )
+
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)
