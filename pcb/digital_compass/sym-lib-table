@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "digital_compass")(type "KiCad")(uri "${KIPRJMOD}/digital_compass.kicad_sym")(options "")(descr ""))
+)
