@@ -1,3 +1,4 @@
 (sym_lib_table
+  (version 7)
   (lib (name "digital_compass")(type "KiCad")(uri "${KIPRJMOD}/digital_compass.kicad_sym")(options "")(descr ""))
 )
