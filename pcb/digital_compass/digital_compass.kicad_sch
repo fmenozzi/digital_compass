@@ -6,7 +6,7 @@
 
   (title_block
     (title "Digital Compass")
-    (date "2022-12-10")
+    (date "2023-04-24")
     (rev "v1")
     (comment 1 "Description: Digital compass")
     (comment 2 "License: MIT License (https://opensource.org/licenses/MIT)")
@@ -721,7 +721,6 @@
       )
     )
   )
-
 
   (junction (at 135.89 52.07) (diameter 0) (color 0 0 0 0)
     (uuid 0f3d2a29-9f6e-41fa-ae98-2e2066decac9)
