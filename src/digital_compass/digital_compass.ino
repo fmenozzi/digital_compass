@@ -11,18 +11,80 @@ QMC5883LCompass compass;
 
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(ring, NUM_LEDS);
+  FastLED.setBrightness(32);
+  FastLED.clear();
+
+  calibrate();
+}
+
+void calibrate() {
+  int x0 = 0, x1 = 0, y0 = 0, y1 = 0, z0 = 0, z1 = 0;
+  int i0 = 0, i1 = 1, i2 = 2, i3 = 3;
+  int x, y, z;
+  bool changed = false;
+  int t = 0;
+  int c = 0;
 
   compass.init();
-  compass.setCalibration(-1927, 402, -715, 1688, -2215, 525);
-}
 
-void show_led(int idx, CRGB color) {
-  ring[idx] = color;
-  ring[idx].fadeLightBy(196);
-}
+  while (1) {
+    // Nice ring chase sequence while we calibrate.
+    FastLED.clear();
+    ring[i0] = CRGB::White;
+    ring[i1] = CRGB::White;
+    ring[i2] = CRGB::White;
+    ring[i3] = CRGB::Red;
+    FastLED.show();
+    i0 = (i0 + 1) % NUM_LEDS;
+    i1 = (i1 + 1) % NUM_LEDS;
+    i2 = (i2 + 1) % NUM_LEDS;
+    i3 = (i3 + 1) % NUM_LEDS;
+    delay(40);
 
-void clear_led(int idx) {
-  ring[idx] = CRGB::Black;
+    compass.read();
+    x = compass.getX();
+    y = compass.getY();
+    z = compass.getZ();
+
+    changed = false;
+    if (x < x0) {
+      x0 = x;
+      changed = true;
+    }
+    if (x > x1) {
+      x1 = x;
+      changed = true;
+    }
+    if (y < y0) {
+      y0 = y;
+      changed = true;
+    }
+    if (y > y1) {
+      y1 = y;
+      changed = true;
+    }
+    if (z < z0) {
+      z0 = z;
+      changed = true;
+    }
+    if (z > z1) {
+      z1 = z;
+      changed = true;
+    }
+
+    if (changed) {
+      c = millis();
+    }
+
+    t = millis();
+
+    if (t - c > 5000) {
+      FastLED.clear();
+      break;
+    }
+  }
+
+  compass.setCalibration(x0, x1, y0, y1, z0, z1);
 }
 
 void draw_compass(int north_led_idx) {
@@ -31,17 +93,17 @@ void draw_compass(int north_led_idx) {
   int idx_s = (idx_n + NUM_LEDS*2/4) % NUM_LEDS;
   int idx_w = (idx_n + NUM_LEDS*3/4) % NUM_LEDS;
 
-  show_led(idx_n, CRGB::Red);
-  show_led(idx_e, CRGB::White);
-  show_led(idx_s, CRGB::White);
-  show_led(idx_w, CRGB::White);
+  ring[idx_n] = CRGB::Red;
+  ring[idx_e] = CRGB::White;
+  ring[idx_s] = CRGB::White;
+  ring[idx_w] = CRGB::White;
 
   FastLED.show();
 
-  clear_led(idx_n);
-  clear_led(idx_e);
-  clear_led(idx_s);
-  clear_led(idx_w);
+  ring[idx_n] = CRGB::Black;
+  ring[idx_e] = CRGB::Black;
+  ring[idx_s] = CRGB::Black;
+  ring[idx_w] = CRGB::Black;
 }
 
 // Determine the index of the Neopixel ring that corresponds to north, given
