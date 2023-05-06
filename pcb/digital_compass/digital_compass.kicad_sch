@@ -6,8 +6,8 @@
 
   (title_block
     (title "Digital Compass")
-    (date "2023-04-24")
-    (rev "v1")
+    (date "2023-05-06")
+    (rev "v1.1")
     (comment 1 "Description: Digital compass")
     (comment 2 "License: MIT License (https://opensource.org/licenses/MIT)")
     (comment 3 "Author: Federico Menozzi")
