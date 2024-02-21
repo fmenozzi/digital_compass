@@ -15,3 +15,5 @@ Accuracy will suffer for a couple of reasons, such as being limited to only 24 p
 The microcontroller is a Seeeduino Xiao, and the magnetometer board uses the QMC5883L chip. The LED ring is an Adafruit Neopixel Ring 24, and a basic level shifter board does the conversions between the Xiao's needed 3.3V and 5V.
 
 The software was programmed using Arduino. The circuit board was designed in KiCAD and manufactured by JLCPCB. The 3D-printed enclosure was designed in FreeCAD.
+
+All software, schematics, and design files are licensed under the [MIT license](https://mit-license.org/).
